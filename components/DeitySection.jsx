@@ -1,0 +1,147 @@
+'use client';
+
+import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, EffectFade } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-fade";
+
+const deityArray = [
+    {
+        marathi: "वासुदेव पुरुष",
+        english: "Vasudev Purush",
+        img: "/diety/1.jpg",
+        description: "Associated with Lord Krishna or Vishnu, Vasudev Purush symbolizes divine protection and cosmic order."
+    },
+    {
+        marathi: "राम पुरुष",
+        english: "Ram Purush",
+        img: "/diety/2.jpg",
+        description: "Representative of Lord Ram, the ideal king and upholder of dharma. Ram Purush signifies strength and virtue."
+    },
+    {
+        marathi: "ग्राम पुरुष",
+        english: "Gram Purush",
+        img: "/diety/3.jpg",
+        description: "The guardian deity of the village, responsible for its protection, prosperity, and peace."
+    },
+    {
+        marathi: "गोविंद पुरुष",
+        english: "Govind Purush",
+        img: "/diety/4.jpg",
+        description: "An epithet of Krishna, Govind Purush embodies compassion, joy, and the nurturing aspect of the Divine."
+    },
+    {
+        marathi: "विट्टल पुरुष",
+        english: "Vittal Purush",
+        img: "/diety/5.jpg",
+        description: "A form of Krishna or Vishnu, commonly worshipped in Maharashtra. Vittal Purush stands for devotion and humility."
+    },
+    {
+        marathi: "अनंत विठ्ठल पुरुष",
+        english: "Anant Vithal Purush",
+        img: "/diety/6.jpg",
+        description: "An eternal form of Vithoba symbolizing infinite divinity and timeless spiritual presence."
+    },
+    {
+        marathi: "पद्मनाभ पुरुष",
+        english: "Padmanabha Purush",
+        img: "/diety/7.jpg",
+        description: "Refers to the lotus-navel Vishnu form. Padmanabha Purush is the creator and sustainer of all worlds."
+    },
+    {
+        marathi: "दंड पाणी",
+        english: "Danda Pani",
+        img: "/diety/8.jpg",
+        description: "A fierce form holding a staff (danda), Danda Pani signifies protection, law, and righteous punishment."
+    },
+    {
+        marathi: "आदिसिंह पुरुष",
+        english: "Adhisimha Purush",
+        img: "/diety/9.jpg",
+        description: "Possibly a local form with lion symbolism, Adhisimha Purush reflects strength, courage, and divine leadership."
+    }
+];
+
+
+export default function DeitySection() {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const currentDeity = deityArray[activeIndex];
+
+    return (
+        <>
+            <div className="relative h-full w-full flex justify-center items-center">
+
+                <div
+                    className="w-full h-[90%] bg-cover bg-center relative overflow-hidden"
+                    style={{
+                        backgroundImage: `url(${currentDeity.img})`,
+                        transition: "background-image 1s ease-in-out",
+                    }}
+                >
+                    <div className="w-full h-full backdrop-blur-2xl flex flex-col ">
+                        <div className="h-[10%] w-full bg-black/10 flex justify-center items-center">
+                            <h1 className="text-md md:text-5xl font-semibold font-serif text-gray-500 animate-color-and-flow2">Nine Deities, Eternal Protectors of Our People.</h1>
+                        </div>
+                        <div className="h-[90%] w-full flex justify-center items-center">
+                            <div className="h-[90%] w-[90%] md:w-[70%] bg-black/40 rounded-2xl flex flex-col md:flex-row justify-center items-center">
+                                <div className="h-[45%] w-full md:w-[45%] md:h-full flex justify-center items-center">
+                                    <Swiper
+                                        modules={[Autoplay, EffectFade]}
+                                        effect="fade"
+                                        fadeEffect={{ crossFade: true }}
+                                        spaceBetween={30}
+                                        slidesPerView={1}
+                                        loop={true}
+                                        speed={2000}
+                                        autoplay={{
+                                            delay: 3000,
+                                            disableOnInteraction: false,
+                                        }}
+                                        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+                                        className="w-[98%] h-[98%]"
+                                    >
+                                        {deityArray.map((deity, index) => (
+                                            <SwiperSlide key={index}>
+                                                <div className="h-full w-full bg-white rounded-lg overflow-hidden shadow">
+                                                    <img
+                                                        src={deity.img}
+                                                        alt={deity.english}
+                                                        className="w-full h-full object-cover object-center"
+                                                    />
+                                                </div>
+                                            </SwiperSlide>
+                                        ))}
+                                    </Swiper>
+                                </div>
+                                <div className="h-[55%] w-full md:w-[55%] md:h-full flex flex-col justify-center items-center text-white text-center space-y-6 transition-opacity duration-1000 ease-in-out opacity-100 bg-white/5 backdrop-blur-sm rounded-2xl p-10 shadow-inner shadow-amber-100/20">
+                                    <h2 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-wide text-amber-200 transition-opacity duration-1000">
+                                        {currentDeity.marathi}
+                                    </h2>
+
+                                    <p className="text-xl md:text-2xl font-semibold text-amber-100">
+                                        {currentDeity.english}
+                                    </p>
+
+                                    <p className="text-base md:text-lg text-gray-200 leading-relaxed max-w-xl mx-auto">
+                                        {currentDeity.description}
+                                    </p>
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </>
+
+    );
+}
