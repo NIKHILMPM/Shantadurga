@@ -73,7 +73,7 @@ export default function DeitySection() {
             <div className="relative h-full w-full flex justify-center items-center">
 
                 <div
-                    className="w-[85%] h-[90%] bg-cover bg-center relative overflow-hidden rounded-xl"
+                    className="w-full md:w-[85%] h-[90%] bg-cover bg-center relative overflow-hidden rounded-xl"
                     style={{
                         backgroundImage: `url(${currentDeity.img})`,
                         transition: "background-image 1s ease-in-out",
