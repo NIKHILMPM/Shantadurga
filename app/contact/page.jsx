@@ -27,7 +27,7 @@ const Page = () => {
             <div ref={contactRef} className="w-full max-w-6xl bg-white shadow-2xl rounded-3xl overflow-hidden">
                 {/* Header */}
                 <div className="bg-amber-200 px-8 py-6 flex flex-col gap-3 md:gap-6 items-center text-center">
-                    <h1 className="text-3xl md:text-4xl font-bold text-gray-800">Have Any Questions?</h1>
+                    <h1 className="text-3xl md:text-4xl font-bold text-gray-800 animate-color-and-flow2 p-2">Have Any Questions?</h1>
                     <div className="flex flex-col md:flex-row justify-between w-full max-w-4xl text-gray-700 text-sm md:text-base gap-4">
                         <div className="flex items-center gap-2">
                             <MailOutlineIcon className="text-amber-600" />

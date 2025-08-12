@@ -41,7 +41,6 @@ const Page = () => {
   const historyRef = useRef();
   const dietyRef = useRef();
 
-
   // Section 1 entrance animation
   useGSAP(() => {
 
@@ -96,42 +95,46 @@ const Page = () => {
 
   useGSAP(() => {
     const divRefs = [historyRef, dietyRef];
+
     divRefs.forEach((ref, index) => {
       if (!ref.current) return;
+
       gsap.fromTo(
         ref.current,
-        { x: index % 2 ? -200 : 200, opacity: 0, scale: 0.8 },
+        index % 2 === 0
+          ? { x: -200, opacity: 0, scale: 0.8 }
+          : { y: 100, opacity: 0, scale: 0.8 },
         {
           x: 0,
+          y: 0,
           opacity: 1,
           scale: 1,
-          duration: 1,
           ease: "power2.inOut",
           duration: 0.5,
           scrollTrigger: {
             trigger: ref.current,
             start: "top 80%",
             end: "bottom 100%",
-            scrub: 0.2
-          }
+            scrub: 0.2,
+          },
         }
       );
-    })
-
+    });
   }, []);
+
 
 
   return (
     <>
 
       <div ref={containerRef} className=" overflow-hidden">
-        <div className="h-screen w-screen panel">
+        <div className="max-h-screen w-screen ">
           <div className="fixed inset-0 w-screen h-screen -z-10 opacity-100 bg-cover" style={{ backgroundImage: "url('/background/background.jpg')" }}>
             <div className="w-full h-full backdrop-blur-sm"></div>
           </div>
 
           {/* Section 1 - Hero */}
-          <div className="relative h-screen w-screen panel">
+          <div className="relative h-screen w-screen ">
             <Swiper
               modules={[Autoplay, EffectFade]}
               effect="fade"
@@ -156,14 +159,14 @@ const Page = () => {
                 ref={section1Ref}
                 className="flex h-full w-[90%] flex-col justify-center px-6 py-10 text-white space-y-6 bg-transparent"
               >
-                <div className="w-full h-full flex justify-center items-center">
-                  <h1 className="mt-16 md:mt-6 text-4xl md:text-5xl font-bold w-full h-full flex justify-center items-start">
+                <div className="w-full h-full flex justify-start items-center">
+                  <h1 className="mt-16 md:mt-12 text-3xl md:text-4xl md:max-w-sm font-bold w-full h-full flex justify-start items-start">
                     Shree Shantadurga
                     Shankhwal Devi
                     Temple Trust
                   </h1>
                 </div>
-                <p className="text-sm md:text-lg text-gray-200 max-w-xl">
+                <p className="text-sm md:text-sm text-gray-200 max-w-sm">
                   Shantadurga Temple stands as a sacred symbol of devotion and tradition. Dedicated to the goddess of peace and prosperity, it is a spiritual haven for countless devotees.
                 </p>
                 <div>
@@ -182,7 +185,7 @@ const Page = () => {
         <div className="h-[5vh] md:h-[10vh]" />
         {/* Section 2 - Grid of Links */}
 
-        <div className="h-screen w-screen flex justify-center items-center panel">
+        <div className="h-screen w-screen flex justify-center items-center ">
           <div
             ref={section2Ref}
             className="h-[90%] w-[65%] grid grid-rows-4 gap-2 md:grid-cols-2 md:grid-rows-2 md:p-4 md:gap-16 "
@@ -212,7 +215,7 @@ const Page = () => {
         <div className="h-[2vh] md:h-[10vh]" />
 
         {/* Section 3 - History */}
-        <div ref={historyRef} className=" h-auto min-h-screen w-screen flex justify-center items-center panel overflow-hidden">
+        <div ref={historyRef} className=" h-auto min-h-screen w-screen flex justify-center items-center  overflow-hidden">
           <div className="w-full flex flex-col p-5 bg-gradient-to-tl from-amber-100 to-amber-100 md:flex-row md:p-0 md:h-[90%]">
             <div className="block md:hidden text-4xl font-mono text-gray-500 animate-color-and-flow2">About us</div>
             {/* Image Section */}
@@ -269,14 +272,13 @@ const Page = () => {
 
 
         {/* section4 */}
-        <div ref={dietyRef} className="h-screen w-screen flex justify-center items-center panel">
+        <div ref={dietyRef} className="h-screen w-screen flex justify-center items-center ">
           <DeitySection />
         </div>
         <div className="h-[5vh] md:h-[10vh]" />
 
         {/* footer */}
-        <div className="h-1/2 md:h-screen w-screen flex justify-center items-end panel">
-
+        <div className="h-1/2 md:h-screen w-screen flex justify-center items-end ">
           <Footer />
         </div>
       </div >

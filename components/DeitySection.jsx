@@ -73,7 +73,7 @@ export default function DeitySection() {
             <div className="relative h-full w-full flex justify-center items-center">
 
                 <div
-                    className="w-full h-[90%] bg-cover bg-center relative overflow-hidden"
+                    className="w-[85%] h-[90%] bg-cover bg-center relative overflow-hidden rounded-xl"
                     style={{
                         backgroundImage: `url(${currentDeity.img})`,
                         transition: "background-image 1s ease-in-out",
@@ -81,7 +81,7 @@ export default function DeitySection() {
                 >
                     <div className="w-full h-full backdrop-blur-2xl flex flex-col ">
                         <div className="h-[10%] w-full bg-black/10 flex justify-center items-center">
-                            <h1 className="text-md md:text-5xl font-semibold font-serif text-gray-500 animate-color-and-flow2">Nine Deities, Eternal Protectors of Our People.</h1>
+                            <h1 className="text-sm md:text-5xl font-semibold font-serif text-gray-500 animate-color-and-flow2">Nine Deities, Eternal Protectors of Our People.</h1>
                         </div>
                         <div className="h-[90%] w-full flex justify-center items-center">
                             <div className="h-[90%] w-[90%] md:w-[70%] bg-black/40 rounded-2xl flex flex-col md:flex-row justify-center items-center">
